@@ -24,14 +24,6 @@ defmodule GenReport do
     2020
   ]
 
-  defp get_names(filename) do
-    "#{filename}"
-    |> Parser.parse_file()
-    |> Enum.map(&List.first(&1))
-    |> Enum.frequencies()
-    |> Map.keys()
-  end
-
   def build(filename) do
     "#{filename}"
     |> Parser.parse_file()
@@ -42,6 +34,14 @@ defmodule GenReport do
 
   def build do
     {:error, "Insira o nome de um arquivo"}
+  end
+
+  defp get_names(filename) do
+    "#{filename}"
+    |> Parser.parse_file()
+    |> Enum.map(&List.first(&1))
+    |> Enum.frequencies()
+    |> Map.keys()
   end
 
   defp acc_report(filename) do
